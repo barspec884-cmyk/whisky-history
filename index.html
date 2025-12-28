@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Whisky Chronicle — Amber Palette</title>
+<title>Whisky History — 琥珀色の液体を紐解く航海図</title>
 <meta name="description" content="ウイスキーの誕生から現代のクラフト時代までを辿る、歴史の航海図。" />
 
 <style>
@@ -43,6 +43,25 @@
     z-index:100;
   }
   .topbar{max-width:1000px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between;}
+  
+  /* 戻るボタンのスタイル */
+  .back-button {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--accent);
+    font-size: 0.8rem;
+    border: 1px solid rgba(220,179,104, 0.4);
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(220,179,104, 0.05);
+    transition: all 0.3s ease;
+  }
+  .back-button:hover {
+    background: rgba(220,179,104, 0.15);
+    border-color: var(--accent);
+    transform: translateX(-3px);
+  }
+
   .brand h1{margin:0; font-size:1.1rem; color:#fff;}
   .brand p{margin:0; font-size:.7rem; color:var(--muted);}
 
@@ -106,14 +125,16 @@
   .glossary-item p { margin: 0; font-size: 0.85rem; color: var(--muted); }
 
   .nav-pill {
-    padding: 8px 16px; border-radius: 99px; background: var(--card);
+    padding: 6px 14px; border-radius: 99px; background: var(--card);
     border: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; cursor: pointer;
+    transition: all 0.2s;
   }
   .nav-pill:hover { background: var(--line); color: #fff; }
 
   @media (max-width: 600px) {
     .era-section { padding-left: 25px; }
     .era-title { font-size: 1.3rem; }
+    .topbar { flex-direction: column; gap: 10px; text-align: center; }
   }
 </style>
 </head>
@@ -121,9 +142,10 @@
 <body>
 <header>
   <div class="topbar">
+    <a href="https://amber-palette-hub.vercel.app/" class="back-button">← Amber Palette Hub</a>
     <div class="brand">
-      <h1>Whisky Chronicle</h1>
-      <p>Amber Palette: 歴史を味わうタイムライン</p>
+      <h1>Whisky History</h1>
+      <p>琥珀色の液体を紐解く航海図</p>
     </div>
     <div style="display:flex; gap:10px;">
       <div class="nav-pill" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP</div>
