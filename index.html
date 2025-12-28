@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Whiskyの歴史 — Amber Palette</title>
-<meta name="description" content="Whiskyの歴史を年表・地域別・用語で学べる1枚完結ページ。" />
+<title>Whisky Chronicle — Amber Palette</title>
+<meta name="description" content="ウイスキーの誕生から現代のクラフト時代までを辿る、歴史の航海図。" />
 
 <style>
   :root{
-    /* より深く、落ち着いたダークトーン */
     --bg1: #0d0402; 
     --bg2: #1a0c06;
     --card: rgba(255,255,255,.05);
@@ -16,32 +15,26 @@
     --txt: #f0ece6;
     --muted: #b0a69e;
     --line: rgba(255,255,255,.12);
-    --accent: #dcb368;  /* 少し落ち着いたゴールド */
+    --accent: #dcb368;
     --accent2: #b86a2e;
     --shadow: 0 14px 40px rgba(0,0,0,.6);
     --radius: 16px;
   }
 
   *{box-sizing:border-box;}
-  html,body{height:100%;}
   body{
     margin:0;
     font-family: "Noto Sans JP", system-ui, -apple-system, sans-serif;
     color:var(--txt);
-    /* 背景をスッキリさせる：強い光を抑え、グラデーションを滑らかに */
     background: 
       radial-gradient(circle at 50% 0%, rgba(220,179,104,0.08), transparent 60%),
       linear-gradient(180deg, var(--bg2) 0%, var(--bg1) 100%);
-    background-attachment: fixed; /* スクロールしても背景を固定して落ち着きを出す */
-    overflow-x:hidden;
+    background-attachment: fixed;
+    line-height: 1.8;
   }
 
-  a{color:inherit; text-decoration:none;}
-  
-  /* レイアウト調整 */
-  .wrap{max-width:1000px; margin:0 auto; padding:20px 18px 80px;}
+  .wrap{max-width:900px; margin:0 auto; padding:20px 18px 100px;}
 
-  /* Header */
   header{
     position:sticky; top:0;
     backdrop-filter: blur(12px);
@@ -49,179 +42,79 @@
     border-bottom: 1px solid var(--line);
     z-index:100;
   }
-  .topbar{max-width:1000px; margin:0 auto; padding:12px 18px; display:flex; gap:12px; align-items:center; justify-content:space-between;}
-  .brand{display:flex; gap:12px; align-items:center;}
-  .logo{
-    width:36px; height:36px; border-radius:10px;
-    background: linear-gradient(135deg, #dcb368, #b86a2e);
-    box-shadow: 0 4px 12px rgba(220,179,104,0.3);
-  }
-  .brand h1{margin:0; font-size:1.1rem; letter-spacing:.02em; color:#fff;}
-  .brand p{margin:2px 0 0; font-size:.75rem; color:var(--muted);}
+  .topbar{max-width:1000px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between;}
+  .brand h1{margin:0; font-size:1.1rem; color:#fff;}
+  .brand p{margin:0; font-size:.7rem; color:var(--muted);}
 
-  /* Tools */
-  .tools{display:flex; gap:8px; align-items:center;}
-  .search{
-    display:flex; align-items:center; gap:8px;
-    padding:8px 12px; border-radius:99px;
-    border:1px solid var(--line);
-    background: rgba(255,255,255,.03);
-    width:240px;
-    transition: width .2s;
-  }
-  .search:focus-within{border-color:var(--accent);}
-  .search input{
-    width:100%; background:transparent; border:none; outline:none;
-    color:var(--txt); font-size:.9rem;
-  }
-  .pill{
-    display:inline-flex; align-items:center; gap:6px;
-    padding:8px 12px; border-radius:99px;
-    border:1px solid var(--line);
-    background: rgba(255,255,255,.03);
-    cursor:pointer; font-size:.85rem; color:var(--muted);
-    transition: .2s;
-  }
-  .pill:hover{background: rgba(255,255,255,.08); color:var(--txt);}
-  .pill b{color:var(--accent);}
-
-  /* Hero Area */
+  /* Hero */
   .hero{
-    margin-top:24px; padding:24px;
-    border-radius: var(--radius);
-    border:1px solid var(--line);
-    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.2));
-    box-shadow: var(--shadow);
+    text-align: center; padding: 60px 20px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
   }
-  .hero h2{margin:0 0 10px; font-size:1.4rem; color:#fff;}
-  .hero .lead{margin:0; color:var(--muted); line-height:1.7; font-size:.95rem;}
-  .hero .meta{margin-top:16px; display:flex; gap:8px; flex-wrap:wrap;}
-  .tag{
-    padding:6px 10px; border-radius:6px;
-    background: rgba(220,179,104,.1); border:1px solid rgba(220,179,104,.2);
-    color:var(--accent); font-size:.8rem;
+  .hero h2{ font-size: 2rem; color: var(--accent); margin-bottom: 10px; }
+  .hero p{ max-width: 600px; margin: 0 auto; color: var(--muted); }
+
+  /* History Era Section */
+  .era-section {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 60px;
+    border-left: 2px solid var(--accent);
+  }
+  .era-section::before {
+    content: "";
+    position: absolute;
+    left: -9px; top: 0;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
   }
 
-  /* Common Sections */
-  .section{
-    margin-top:24px;
-    border-radius: var(--radius);
-    border:1px solid var(--line);
-    background: rgba(20, 10, 5, 0.4); /* 背景を少し透過させてなじませる */
+  .era-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
   }
-  .section header{
-    position:unset; background:transparent;
-    border-bottom:1px solid var(--line);
-    padding:16px 20px;
-  }
-  .section .title h3{margin:0; font-size:1.1rem; color:#fff;}
-  .section .title span{margin-left:10px; font-size:.85rem; color:var(--muted);}
-  .section .body{padding:20px;}
+  .era-title { font-size: 1.6rem; color: #fff; margin: 0 0 15px; }
+  .era-content { background: var(--card); border: 1px solid var(--card-border); padding: 25px; border-radius: var(--radius); }
+  
+  .event-box { margin-bottom: 24px; }
+  .event-date { font-weight: bold; color: var(--accent2); font-size: 1.1rem; display: block; margin-bottom: 5px; }
+  .event-box p { margin: 0; font-size: 0.95rem; color: var(--txt); }
+  .event-box small { color: var(--muted); display: block; margin-top: 8px; border-left: 2px solid var(--line); padding-left: 10px; }
 
-  /* Cards Grid */
-  .cards{
-    display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:16px;
-
+  /* Glossary Grid */
+  .glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
   }
-  .card{
-    padding:16px; border-radius:12px;
-    background: rgba(255,255,255,.03); border:1px solid var(--card-border);
-  }
-  .card h4{margin:0 0 10px; font-size:1rem; color:var(--accent);}
-  .card p{margin:0; font-size:.9rem; line-height:1.6; color:var(--muted);}
-  .card .k{color:#fff; font-weight:bold;}
-
-  /* Timeline */
-  .timeline{display:grid; gap:12px;}
-  .trow{
-    display:grid; grid-template-columns: 80px 1fr; gap:16px;
-    padding:14px; border-radius:12px;
-    background: rgba(0,0,0,.2); border:1px solid var(--card-border);
-    align-items:start;
-  }
-  .year{font-weight:bold; color:var(--accent); font-size:.95rem; text-align:right;}
-  .desc{font-size:.92rem; line-height:1.6; color:var(--muted);}
-  .desc b{color:#fff;}
-
-  /* Tabs & Regions */
-  .tabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px;}
-  .tab{
-    padding:8px 16px; border-radius:99px;
-    background: rgba(255,255,255,.05); border:1px solid var(--line);
-    font-size:.9rem; cursor:pointer; color:var(--muted); transition:.2s;
-  }
-  .tab:hover{background: rgba(255,255,255,.1);}
-  .tab.active{
-    background: rgba(220,179,104,.15); border-color:var(--accent); color:var(--accent);
-  }
-  .region{display:none; animation: fadeIn .3s ease;}
-  .region.active{display:block;}
-  @keyframes fadeIn { from{opacity:0; transform:translateY(5px);} to{opacity:1; transform:none;} }
-
-  .region ul{margin:0 0 20px 20px; padding:0; line-height:1.7; color:var(--muted);}
-  .region li{margin-bottom:6px;}
-  .region li b{color:#fff;}
-
-  /* Taste Link (画像付きリンク) */
-  .taste-link {
-    padding: 16px;
-    background: linear-gradient(90deg, rgba(0,0,0,0.3), rgba(0,0,0,0.1));
-    border-radius: 12px;
+  .glossary-item {
+    background: rgba(255,255,255,0.03);
     border: 1px solid var(--line);
-    display: flex; gap: 16px; align-items: start;
+    padding: 15px;
+    border-radius: 12px;
   }
-  @media (max-width: 600px){ .taste-link{flex-direction:column; text-align:center; align-items:center;} }
-  
-  .bottle-img {
-    width: 70px; height: 110px;
-    flex-shrink: 0; object-fit: cover;
-    border-radius: 6px; background: #000;
-    box-shadow: 0 4px 10px rgba(0,0,0,.5);
-  }
-  .taste-info h5 { margin: 0 0 6px; font-size: 1rem; color: #fff; }
-  .taste-info p { margin: 0 0 10px; font-size: 0.85rem; line-height: 1.5; color: var(--muted); }
-  .flavors { display: flex; gap: 6px; flex-wrap: wrap; }
-  @media (max-width: 600px){ .flavors{justify-content:center;} }
+  .glossary-item b { color: var(--accent); display: block; margin-bottom: 5px; }
+  .glossary-item p { margin: 0; font-size: 0.85rem; color: var(--muted); }
 
-  .f-tag {
-    font-size: 0.7rem; padding: 2px 8px; border-radius: 4px;
-    background: rgba(255,255,255,0.08); color: #ddd; border:1px solid rgba(255,255,255,0.1);
+  .nav-pill {
+    padding: 8px 16px; border-radius: 99px; background: var(--card);
+    border: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; cursor: pointer;
   }
+  .nav-pill:hover { background: var(--line); color: #fff; }
 
-  /* Glossary & Quiz */
-  .glossary{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:12px;}
-  .term{
-    padding:14px; border-radius:12px;
-    background: rgba(0,0,0,.2); border:1px solid var(--card-border);
+  @media (max-width: 600px) {
+    .era-section { padding-left: 25px; }
+    .era-title { font-size: 1.3rem; }
   }
-  .term b{color:var(--accent); display:block; margin-bottom:4px;}
-  .term p{margin:0; font-size:.88rem; color:var(--muted); line-height:1.5;}
-  
-  .quiz .q{
-    padding:16px; margin-bottom:12px; border-radius:12px;
-    background: rgba(0,0,0,.2); border:1px solid var(--card-border);
-  }
-  .opts{display:grid; gap:8px; margin-top:12px;}
-  .opt{
-    display:flex; align-items:center; gap:10px; padding:10px;
-    border-radius: 8px; background: rgba(255,255,255,.05);
-    cursor:pointer; transition:.2s;
-  }
-  .opt:hover{background: rgba(255,255,255,.1);}
-  .result{
-    margin-top:12px; padding:10px; border-radius:8px;
-    background: rgba(220,179,104,.15); color:#ffe; border:1px solid var(--accent);
-    display:none; line-height:1.5; font-size:.9rem;
-  }
-
-  /* Responsive & Print */
-  @media (max-width: 768px){
-    .topbar{flex-direction:column; align-items:stretch;}
-    .search{width:100%;}
-    .tools{justify-content:space-between; margin-top:10px;}
-    .trow{grid-template-columns:1fr;} .year{text-align:left;}
-  }
-  mark{background:rgba(220,179,104,.4); color:#fff;}
 </style>
 </head>
 
@@ -229,433 +122,130 @@
 <header>
   <div class="topbar">
     <div class="brand">
-      <div class="logo"></div>
-      <div>
-        <h1>Whisky History</h1>
-        <p>Amber Palette: 歴史と味わいのガイド</p>
-      </div>
+      <h1>Whisky Chronicle</h1>
+      <p>Amber Palette: 歴史を味わうタイムライン</p>
     </div>
-    <div class="tools">
-      <div class="search">
-        <span style="font-size:1rem; opacity:.5;">🔍</span>
-        <input id="q" type="search" placeholder="検索（例：1823 / ピート）" />
-      </div>
-      <div class="pill" id="btnTop"><b>↑</b>TOP</div>
-      <div class="pill" id="btnPrint"><b>⎙</b>PRINT</div>
+    <div style="display:flex; gap:10px;">
+      <div class="nav-pill" onclick="window.scrollTo({top:0, behavior:'smooth'})">TOP</div>
     </div>
   </div>
 </header>
 
 <div class="wrap">
-  <section class="hero" id="top">
-    <h2>“Whisky” はどこから来て、どう世界へ広がったか</h2>
-    <p class="lead">
-      このページは、ウイスキーの歴史を「重要イベント」「地域ごとの個性」「必須用語」の3軸で整理しています。
-      バーでの会話や、自分好みのボトル探しに役立つ知識を凝縮しました。
+  <section class="hero">
+    <span class="era-label">The Journey of Water of Life</span>
+    <h2>ウイスキー、その数千年の航跡</h2>
+    <p>
+      中東の錬金術から始まり、スコットランドの谷底で密造され、やがて世界を熱狂させる黄金の液体へ。
+      5つの時代で紐解く、知的なお酒の履歴書。
     </p>
-    <div class="meta">
-      <span class="tag">年表：主要転換点</span>
-      <span class="tag">地域別：スコッチ / アメリカ / 日本 ほか</span>
-      <span class="tag">用語：税制・樽・蒸留</span>
-    </div>
   </section>
 
-  <section class="section" data-search>
-    <header>
-      <div class="title"><h3>全体像（3つの視点）</h3><span>まずは地図より“流れ”を掴む</span></div>
-    </header>
-    <div class="body">
-      <div class="cards">
-        <div class="card">
-          <h4>1) 技術：蒸留と熟成</h4>
-          <p>蒸留技術に加え、<span class="k">「樽熟成」</span>が品質と価値を決定づけました。樽材や環境が地域ごとの個性を生みます。</p>
-        </div>
-        <div class="card">
-          <h4>2) 制度：税制と規制</h4>
-          <p>ウイスキー史は<span class="k">税金</span>との戦い。密造から合法化への流れが、現在の産業構造を作りました。</p>
-        </div>
-        <div class="card">
-          <h4>3) 市場：ブレンディング</h4>
-          <p>個性の強い原酒を混ぜ合わせる<span class="k">ブレンデッド</span>の発明が、品質を安定させ世界市場を開拓しました。</p>
-        </div>
+  <article class="era-section">
+    <span class="era-label">Era 01</span>
+    <h3 class="era-title">起源：錬金術と「生命の水」</h3>
+    <div class="era-content">
+      <div class="event-box">
+        <span class="event-date">8世紀 - 12世紀</span>
+        <p><b>蒸留技術の伝来</b><br>中東の錬金術師たちが開発した「アランビック（蒸留器）」が、十字軍や修道僧の手によってヨーロッパへ。当初の目的は黄金作りや香水、そして「不老長寿の薬」でした。</p>
       </div>
-
-      <div class="card" style="margin-top:16px; border-color:var(--accent2);">
-        <h4 style="color:var(--accent);">★ キーポイント：蒸留器の違いが「味」を決める</h4>
-        <p>19世紀の技術革新により、ウイスキーは大きく2つのタイプに分かれました。</p>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin-top:12px;">
-          <div style="padding:12px; border-radius:8px; background:rgba(0,0,0,.3);">
-            <b style="color:#fff;">ポットスチル（単式蒸留）</b>
-            <p style="margin-top:6px; font-size:.85rem;">伝統的な釜。効率は悪いが、原料の風味が強く残る。<br>→ <b>モルトウイスキー（個性的・重厚）</b></p>
-          </div>
-          <div style="padding:12px; border-radius:8px; background:rgba(0,0,0,.3);">
-            <b style="color:#fff;">連続式蒸留器（コラム）</b>
-            <p style="margin-top:6px; font-size:.85rem;">連続運転可能。不純物が抜け、クリアな酒質に。<br>→ <b>グレーンウイスキー（軽快・飲みやすい）</b></p>
-          </div>
-        </div>
-        <p style="margin-top:8px; font-size:.8rem; opacity:.7;">※この2つを混ぜたのが「ブレンデッドウイスキー」です。</p>
+      <div class="event-box">
+        <span class="event-date">1494年</span>
+        <p><b>現存する最古の記録</b><br>スコットランドの王室帳簿に「修道士ジョン・コーに8ボル（約500kg）の麦芽を。生命の水（アクア・ヴィテ）を作るべし」との記述。これがウイスキーの公的な誕生の瞬間とされています。</p>
+        <small>※当時のウイスキーは熟成されておらず、薬草を加えたジンに近い、荒々しい透明なスピリッツでした。</small>
       </div>
     </div>
-  </section>
+  </article>
 
-  <section class="section" id="timeline" data-search>
-    <header>
-      <div class="title"><h3>年表（重要イベント）</h3><span>“転換点”だけを押さえる</span></div>
-    </header>
-   <div class="body">
-  <div class="timeline" id="timelineList">
-
-    <div class="trow">
-      <div class="year">中世（8–12世紀）</div>
-      <div class="desc">
-        蒸留技術が中東からヨーロッパへ伝来。
-        当初は<b>薬用酒（生命の水＝Aqua Vitae）</b>として修道院や医療の場で用いられ、
-        やがて穀物を原料とする蒸留酒が各地で日常酒として広まっていく。
-        ※ Whisky の語源はゲール語 <b>Uisge Beatha（生命の水）</b>。
+  <article class="era-section">
+    <span class="era-label">Era 02</span>
+    <h3 class="era-title">密造時代：琥珀色の偶然</h3>
+    <div class="era-content">
+      <div class="event-box">
+        <span class="event-date">1707年 - 1823年</span>
+        <p><b>高額な酒税と「密造」の始まり</b><br>イングランドとの合併後、莫大な戦費を賄うためウイスキーに重税が課されます。農民たちは山奥へ逃れ、徴税官の目から逃れるために「密造」を開始しました。</p>
+      </div>
+      <div class="event-box">
+        <span class="event-date">琥珀色の誕生</span>
+        <p><b>偶然がもたらした奇跡</b><br>密造酒を隠すために、輸送用の「シェリー樽の空き樽」に詰めて放置したところ、数年後に美しい琥珀色と芳醇な香りが生まれました。これが現代の「樽熟成」の起源です。</p>
+        <small>燃料として「ピート（泥炭）」を使ったのも、石炭を買えない密造者が身近な燃料で代用したため。これがスコッチ特有のスモーキーフレーバーを生みました。</small>
       </div>
     </div>
+  </article>
 
-    <div class="trow">
-      <div class="year">1600s</div>
-      <div class="desc">
-        スコットランド／アイルランドで蒸留酒が一般化。
-        国家財政のため課税が強化され、<b>合法蒸留と密造が併存する時代</b>に突入。
-        地域ごとの原料・水・燃料の違いが、味の個性を形作り始める。
+  <article class="era-section" style="border-left-color: var(--accent2);">
+    <span class="era-label">Era 03</span>
+    <h3 class="era-title">産業革命：世界基準への飛躍</h3>
+    <div class="era-content">
+      <div class="event-box">
+        <span class="event-date">1823年</span>
+        <p><b>酒税法改正</b><br>税率が適正化され、多くの密造蒸留所が政府公認へ（ザ・グレンリベットが政府公認第1号）。ここからウイスキーは「産業」としての道を歩み始めます。</p>
+      </div>
+      <div class="event-box">
+        <span class="event-date">1830年</span>
+        <p><b>連続式蒸留器の発明</b><br>ロバート・コフィーが「連続式蒸留器」を完成。安価でクリアな「グレーンウイスキー」の大量生産が可能になり、個性的なモルトと混ぜる「ブレンデッドウイスキー」の誕生に繋がりました。</p>
+      </div>
+      <div class="event-box">
+        <span class="event-date">1863年 - 1880s</span>
+        <p><b>フィロキセラ禍：棚ぼたの成功</b><br>害虫によりヨーロッパのブドウ全滅。当時主流だったブランデー（ワイン蒸留酒）が市場から消え、その代役としてスコッチウイスキーが世界中に輸出されるようになりました。</p>
       </div>
     </div>
+  </article>
 
-    <div class="trow">
-      <div class="year">1700s</div>
-      <div class="desc">
-        <b>密造の時代</b>。
-        高額な酒税を逃れるため、生産者は山間部へ。
-        この環境がピート（泥炭）の使用や小規模生産を定着させ、
-        後の<b>スコッチらしい香味の源流</b>となる。
+  <article class="era-section">
+    <span class="era-label">Era 04</span>
+    <h3 class="era-title">世界へ：アメリカと日本の台頭</h3>
+    <div class="era-content">
+      <div class="event-box">
+        <span class="event-date">1920年 - 1933年</span>
+        <p><b>アメリカ禁酒法</b><br>アメリカ国内の蒸留所は壊滅。しかし、「ラフロイグ」などの一部のスコッチは「薬用」として輸入が許可され、逆にブランド認知度を高める皮肉な結果となりました。</p>
+      </div>
+      <div class="event-box">
+        <span class="event-date">1923年 - 1929年</span>
+        <p><b>日本ウイスキーの誕生</b><br>鳥井信治郎と竹鶴政孝が京都・山崎に蒸留所を建設。1929年、初の国産ウイスキー「サントリーウイスキー白札」が発売され、ジャパニーズウイスキーの歴史が始まりました。</p>
       </div>
     </div>
+  </article>
 
-    <div class="trow">
-      <div class="year">1823</div>
-      <div class="desc">
-        <b>酒税法改正（スコットランド）</b>。
-        免許制度が整備され、密造業者が次々と合法化。
-        品質管理と規模拡大が可能となり、
-        ウイスキーは<b>地域の酒から産業へ</b>と大きく転換する。
+  <article class="era-section" style="margin-bottom:0; border-left-style: dotted;">
+    <span class="era-label">Era 05</span>
+    <h3 class="era-title">現代：シングルモルトとクラフトの復興</h3>
+    <div class="era-content">
+      <div class="event-box">
+        <span class="event-date">1963年以降</span>
+        <p><b>グレンフィディックの挑戦</b><br>ブレンド用だった原酒を「シングルモルト」として世界発売。ここから、土地ごとの個性を楽しむ「シングルモルト・ブーム」が世界中で加速します。</p>
+      </div>
+      <div class="event-box">
+        <span class="event-date">2000s - 現在</span>
+        <p><b>ワールドウイスキー・ルネサンス</b><br>台湾のKAVALAN、インドのAMRUT、そして日本のクラフト蒸留所。もはや「5大産地」という枠を超え、世界各地の気候を映し出した新しいウイスキーが次々と生まれています。</p>
       </div>
     </div>
+  </article>
 
-    <div class="trow">
-      <div class="year">1830</div>
-      <div class="desc">
-        <b>連続式蒸留器（コフィー・スチル）の完成</b>。
-        「軽く・安く・大量に」アルコールを生産できるようになり、
-        グレーンウイスキーの安定供給が実現。
-        これが<b>ブレンデッドウイスキー誕生の決定的な土台</b>となる。
-      </div>
+  <h3 style="margin-top:60px; text-align:center; color:var(--accent);">覚えておきたい歴史用語</h3>
+  <div class="glossary-grid">
+    <div class="glossary-item">
+      <b>Uisge Beatha</b>
+      <p>ゲール語で「生命の水」。これが訛って「Whisky」になった。語源を辿れば「アクア・ヴィテ」の翻訳。</p>
     </div>
-
-    <div class="trow">
-      <div class="year">1800s後半</div>
-      <div class="desc">
-        ブレンダーと流通業者が台頭。
-        ボトル詰め・ブランド名・海外輸出が本格化し、
-        ウイスキーは<b>世界市場向けの商品</b>として確立されていく。
-      </div>
+    <div class="glossary-item">
+      <b>Excise Men</b>
+      <p>酒税徴税官。密造者との間で血を洗う攻防が繰り広げられた、ウイスキー史のヒール役。</p>
     </div>
-
-    <div class="trow">
-      <div class="year">1920–1933</div>
-      <div class="desc">
-        <b>アメリカ禁酒法</b>。
-        蒸留・流通が停止し産業は壊滅的打撃を受ける。
-        一方で、酒造が合法だった<b>カナダへ人材・技術・需要が移動</b>。
-        禁酒法終了後の再編を経て、現在の大手メーカー体制が固まる。
-      </div>
+    <div class="glossary-item">
+      <b>Angel's Share</b>
+      <p>熟成中の蒸発。かつては原因不明の減りとして「天使の分け前」とロマンチックに呼ばれた。</p>
     </div>
-
-    <div class="trow">
-      <div class="year">1990s–</div>
-      <div class="desc">
-        <b>シングルモルト再評価とクラフト蒸留の復活</b>。
-        限定品、樽違い、フィニッシュなど
-        「違いそのもの」が価値として評価される時代へ。
-      </div>
-    </div>
-
-    <div class="trow">
-      <div class="year">2000s–</div>
-      <div class="desc">
-        <b>クラフト＆ワールドウイスキーの時代</b>。
-        日本、台湾、インド、北欧などが台頭し、
-        ウイスキーは再び<b>世界各地の土地・気候・文化を映す地酒</b>へ進化している。
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-  <section class="section" id="regions" data-search>
-    <header>
-      <div class="title"><h3>地域別（歴史が生んだ味）</h3><span>代表ボトルで知る</span></div>
-    </header>
-    <div class="body">
-<div class="tabs" role="tablist" aria-label="地域タブ">
-  <div class="tab active" role="tab" aria-selected="true" data-tab="scotch">Scotland</div>
-  <div class="tab" role="tab" aria-selected="false" data-tab="irish">Ireland</div>
-  <div class="tab" role="tab" aria-selected="false" data-tab="american">USA</div>
-
-  <!-- ★ここに追加 -->
-  <div class="tab" role="tab" aria-selected="false" data-tab="canada">Canada</div>
-
-  <div class="tab" role="tab" aria-selected="false" data-tab="japan">Japan</div>
-  <div class="tab" role="tab" aria-selected="false" data-tab="world">World</div>
-</div>
-
-
-      <div class="region active" id="scotch">
-        <b>Scotland（スコッチ）</b>
-        <ul>
-          <li><b>ブレンデッドの功績：</b>個性の強いモルトを、飲みやすいグレーンとブレンドして「世界標準の味」を作った。</li>
-          <li><b>多様な気候：</b>島（潮風・ピート）から平原（華やか）まで、産地ごとに全く違うキャラクターを持つ。</li>
-        </ul>
-        <div class="taste-link">
-          <img src="https://placehold.co/140x220/120703/e0a240?text=Johnnie+Walker" alt="ジョニーウォーカー" class="bottle-img" />
-          <div class="taste-info">
-            <h5>歴史の味：ジョニーウォーカー黒 (Black Label)</h5>
-            <p>世界で最も飲まれるブレンデッドの一つ。各地の原酒を数十種類ブレンドし、スモーキーさとフルーティさを完璧に調和させている。</p>
-            <div class="flavors"><span class="f-tag">スモーキー</span><span class="f-tag">バランス</span><span class="f-tag">複雑</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="region" id="irish">
-        <b>Ireland（アイリッシュ）</b>
-        <ul>
-          <li><b>伝統の3回蒸留：</b>スコッチ（基本2回）より回数を増やし、雑味を取り除いた「クリアで軽快」な酒質を確立。</li>
-          <li><b>飲みやすさの入り口：</b>歴史的な浮き沈みを経て、現在は「誰にでも愛されるスムーズさ」で再ブーム中。</li>
-        </ul>
-        <div class="taste-link">
-          <img src="https://placehold.co/140x220/1b3816/fff?text=Jameson" alt="ジェムソン" class="bottle-img" />
-          <div class="taste-info">
-            <h5>歴史の味：ジェムソン (Jameson)</h5>
-            <p>ピートを使わず、3回蒸留することで生まれるオイリーかつスムーズな飲み口。クセが少なく、ウイスキー初心者に最適。</p>
-            <div class="flavors"><span class="f-tag">スムーズ</span><span class="f-tag">ライト</span><span class="f-tag">青リンゴ</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="region" id="american">
-        <b>USA（バーボン）</b>
-        <ul>
-          <li><b>新樽の焦がし（チャー）：</b>内側を焦がした新樽を使う法律があり、特有の「バニラ・キャラメルの甘み」が生まれる。</li>
-          <li><b>トウモロコシの甘み：</b>原料の51%以上がトウモロコシ。力強く陽気な味わい。</li>
-        </ul>
-        <div class="taste-link">
-          <img src="https://placehold.co/140x220/520f0f/fff?text=Jim+Beam" alt="ジムビーム" class="bottle-img" />
-          <div class="taste-info">
-            <h5>歴史の味：ジムビーム / メーカーズマーク</h5>
-            <p>ケンタッキーの気候と新樽熟成が育む、濃厚な甘みと香ばしさ。ソーダ割り（ハイボール）でも甘さが消えない骨太さが魅力。</p>
-            <div class="flavors"><span class="f-tag">バニラ</span><span class="f-tag">キャラメル</span><span class="f-tag">パワフル</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="region" id="canada">
-  <b>Canada（カナディアン）</b>
-  <ul>
-    <li>
-      <b>禁酒法の受け皿：</b>
-      1920年代、アメリカ禁酒法により需要・人材・資本がカナダへ流入。
-      北米市場向けウイスキー供給の中心となった。
-    </li>
-    <li>
-      <b>連続式蒸留主体：</b>
-      ライトでスムースな酒質は、長期熟成とブレンディングに適し、
-      「飲みやすく安定した味」を実現。
-    </li>
-    <li>
-      <b>静かな名門：</b>
-      派手さはないが、世界的な流通と品質で信頼を築いた。
-    </li>
-  </ul>
-
-  <div class="taste-link">
-    <img src="https://placehold.co/140x220/3a2a1a/f0e6d8?text=Canadian+Club"
-         alt="Canadian Club" class="bottle-img" />
-    <div class="taste-info">
-      <h5>歴史の味：Canadian Club</h5>
-      <p>
-        禁酒法時代にアメリカで密かに飲まれ続けた代表的カナディアン。
-        非常にスムースでクセがなく、
-        「ブレンデッドと連続式蒸留の完成形」の一例。
-      </p>
-      <div class="flavors">
-        <span class="f-tag">スムース</span>
-        <span class="f-tag">ライト</span>
-        <span class="f-tag">クリーン</span>
-      </div>
+    <div class="glossary-item">
+      <b>Coffey Still</b>
+      <p>近代ウイスキーを大衆化させた立役者。連続式蒸留器。これなしにジョニ黒もシーバスも存在しなかった。</p>
     </div>
   </div>
+
+  <footer style="margin-top:80px; text-align:center; padding:40px; border-top:1px solid var(--line); color:var(--muted); font-size:.8rem;">
+    <p>Amber Palette: A Guide to the Eternal Gold Spirits.<br>© 2025 Bar SPEC / Web Hub Project</p>
+  </footer>
 </div>
 
-      <div class="region" id="japan">
-        <b>Japan（ジャパニーズ）</b>
-        <ul>
-          <li><b>繊細さと食中酒：</b>スコッチに学びつつ、日本の食卓に合うよう「水割りやハイボール」でおいしいバランスを追求。</li>
-          <li><b>原酒の作り分け：</b>単一の蒸留所内で多彩な原酒を作り分ける、世界でも稀な技術力を持つ。</li>
-        </ul>
-        <div class="taste-link">
-          <img src="https://placehold.co/140x220/e0d640/333?text=Kakubin" alt="角瓶" class="bottle-img" />
-          <div class="taste-info">
-            <h5>歴史の味：サントリー 角瓶</h5>
-            <p>日本人の味覚に合わせて開発された傑作。ドライな後味と和食に合う甘みで、「ハイボール文化」そのものを作り出した。</p>
-            <div class="flavors"><span class="f-tag">ドライ</span><span class="f-tag">ほのかな甘み</span><span class="f-tag">食事に合う</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-	  <div class="region" id="world" role="tabpanel">
-  <b>World（新興国・クラフト）</b>
-  <ul>
-    <li>
-      <b>クラフト蒸留の時代：</b>
-      1990年代以降、世界各地で小規模蒸留所が急増。
-    </li>
-    <li>
-      <b>気候の影響：</b>
-      台湾・インドなど高温地域では熟成が速く進み、
-      樽管理とリリース設計が重要になる。
-    </li>
-    <li>
-      <b>定義の多様化：</b>
-      法規・表示ルールは国ごとに異なり、
-      「ウイスキーとは何か」自体が地域差を持つ。
-    </li>
-  </ul>
-</div>
-
-  </section>
-
-  <section class="section" id="glossary" data-search>
-    <header>
-      <div class="title"><h3>必須用語</h3><span>プロっぽく見えるキーワード</span></div>
-    </header>
-    <div class="body glossary">
-      <div class="term">
-        <b>ポットスチル (Pot Still)</b>
-        <p>単式蒸留器。効率は悪いが香味成分が残り、個性的なモルトウイスキーを生む。</p>
-      </div>
-      <div class="term">
-        <b>連続式蒸留器 (Column Still)</b>
-        <p>連続的に蒸留できる巨大な設備。軽くクリーンなグレーンウイスキーを大量生産できる。</p>
-      </div>
-      <div class="term">
-        <b>ブレンデッド (Blended)</b>
-        <p>モルトとグレーンを混ぜたもの。品質が安定し飲みやすいため、世界の主流となった。</p>
-      </div>
-      <div class="term">
-        <b>エンジェルズ・シェア (Angel's Share)</b>
-        <p>熟成中に樽から蒸発して減るウイスキーのこと。「天使の分け前」と呼ばれる。</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="quiz" data-search>
-    <header>
-      <div class="title"><h3>ミニクイズ</h3><span>会話の締めに</span></div>
-    </header>
-    <div class="body quiz">
-      <div class="q" data-ans="b">
-        <h4>Q1. ブレンデッドウイスキーが世界で成功した理由は？</h4>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="q1" value="a"> 度数が高かったから</label>
-          <label class="opt"><input type="radio" name="q1" value="b"> 品質の安定と供給力があったから</label>
-          <label class="opt"><input type="radio" name="q1" value="c"> 樽を使わなかったから</label>
-        </div>
-        <div class="result"></div>
-      </div>
-      <div class="q" data-ans="a">
-        <h4>Q2. 連続式蒸留器の特徴は？</h4>
-        <div class="opts">
-          <label class="opt"><input type="radio" name="q2" value="a"> 大量生産でき、ライトな味になる</label>
-          <label class="opt"><input type="radio" name="q2" value="b"> 手作業が必要で、重厚な味になる</label>
-        </div>
-        <div class="result"></div>
-      </div>
-      <div style="margin-top:16px;">
-        <button class="pill" id="btnCheck"><b>✓</b> 採点</button>
-        <button class="pill" id="btnReset" style="margin-left:8px;">リセット</button>
-      </div>
-    </div>
-  </section>
-
-  <p class="footer">
-    Amber Palette: Enjoy Whisky History responsibly.<br>
-    画像はイメージです。実際のボトルの色やデザインとは異なる場合があります。
-  </p>
-</div>
-
-<script>
-  // Smooth Scroll
-  document.getElementById("btnTop").addEventListener("click", ()=>window.scrollTo({top:0,behavior:"smooth"}));
-  document.getElementById("btnPrint").addEventListener("click", ()=>window.print());
-
-  // Tabs
-  const tabs = document.querySelectorAll(".tab");
-  const regions = document.querySelectorAll(".region");
-  tabs.forEach(t => {
-    t.addEventListener("click", () => {
-      tabs.forEach(x => x.classList.remove("active"));
-      regions.forEach(r => r.classList.remove("active"));
-      t.classList.add("active");
-      document.getElementById(t.dataset.tab).classList.add("active");
-    });
-  });
-
-  // Quiz Logic
-  const btnCheck = document.getElementById("btnCheck");
-  const btnReset = document.getElementById("btnReset");
-  
-  btnCheck.addEventListener("click", () => {
-    document.querySelectorAll(".q").forEach(q => {
-      const ans = q.dataset.ans;
-      const sel = q.querySelector("input:checked");
-      const res = q.querySelector(".result");
-      res.style.display = "block";
-      if(!sel){
-        res.textContent = "選択してください";
-        res.style.borderColor = "#888"; res.style.background="#333";
-      } else if(sel.value === ans){
-        res.textContent = "正解！素晴らしい知識です。";
-        res.style.borderColor = "var(--accent)"; res.style.background="rgba(220,179,104,.15)";
-      } else {
-        res.textContent = "惜しい！もう一度確認してみましょう。";
-        res.style.borderColor = "#b86a2e"; res.style.background="rgba(184,106,46,.15)";
-      }
-    });
-  });
-  
-  btnReset.addEventListener("click", () => {
-    document.querySelectorAll("input").forEach(i => i.checked = false);
-    document.querySelectorAll(".result").forEach(r => r.style.display="none");
-  });
-
-  // Search Highlight
-  const input = document.getElementById("q");
-  const areas = document.querySelectorAll("[data-search]");
-  const originalHTML = new Map();
-  areas.forEach(a => originalHTML.set(a, a.innerHTML));
-
-  input.addEventListener("input", () => {
-    const val = input.value.trim();
-    areas.forEach(a => {
-      a.innerHTML = originalHTML.get(a);
-      if(val){
-        const re = new RegExp(`(${val.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, "gi");
-        a.innerHTML = a.innerHTML.replace(re, "<mark>$1</mark>");
-      }
-    });
-  });
-</script>
 </body>
 </html>
